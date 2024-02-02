@@ -1,0 +1,15 @@
+.icon {
+  --color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid var(--color);
+  width: 25px;
+  height: 25px;
+  font-family: serif;
+  font-size: 100%;
+  line-height: 1;
+  color: var(--color);
+}

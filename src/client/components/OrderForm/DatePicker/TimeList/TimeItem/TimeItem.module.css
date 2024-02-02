@@ -1,0 +1,44 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+}
+
+.trigger {
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  font: var(--font-text);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.open ul {
+  opacity: 1;
+  transform: translateY(0) translateX(-50%);
+  pointer-events: all;
+}
+
+.trigger:focus {
+  outline: none;
+}
+
+.trigger:focus-visible {
+  background-color: var(--color-accent-light);
+  color: var(--color-bg);
+}
+
+@media (hover: hover) {
+  .trigger:hover {
+    background-color: var(--color-accent-light);
+    color: var(--color-bg);
+  }
+}
+
+.trigger:active {
+  background-color: var(--color-accent-darken);
+  color: var(--color-bg);
+}

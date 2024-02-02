@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--margin-block);
+}
+
+.token {
+  flex-grow: 1;
+  word-break: break-all;
+}
+
+.deleteBtn {
+  display: flex;
+}
+
+.deleteIcon {
+  --color: var(--color-bg);
+}

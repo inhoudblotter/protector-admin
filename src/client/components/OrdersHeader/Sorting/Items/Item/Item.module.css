@@ -1,0 +1,26 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border: none;
+  width: 100%;
+  background-color: transparent;
+  font: var(--font-text);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
+}
+
+.active .btn {
+  color: var(--color-accent-light);
+}
+
+.active .icon {
+  --color: var(--color-accent-light);
+}

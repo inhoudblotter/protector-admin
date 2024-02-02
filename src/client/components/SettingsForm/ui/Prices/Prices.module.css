@@ -1,0 +1,15 @@
+.title {
+  display: block;
+  margin-bottom: var(--margin-block);
+  font: var(--font-text);
+  color: var(--color-text);
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--margin-block);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

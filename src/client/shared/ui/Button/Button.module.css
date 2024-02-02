@@ -1,0 +1,48 @@
+.btn {
+  position: relative;
+  padding: 0.5em;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-accent-darken);
+  font: var(--font-text);
+  font-weight: 600;
+  color: var(--color-bg);
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.loading {
+  color: transparent;
+}
+
+.loader {
+  --loader-color: var(--color-bg);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:focus-visible {
+  background-color: var(--color-accent-light);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background-color: var(--color-accent-light);
+  }
+}
+
+.btn:active {
+  background-color: var(--color-accent-darken);
+}
+
+.btn:disabled {
+  background-color: var(--color-accent-darken);
+  opacity: 0.5;
+  cursor: not-allowed;
+}

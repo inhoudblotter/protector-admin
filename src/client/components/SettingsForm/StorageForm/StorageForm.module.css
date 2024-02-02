@@ -1,0 +1,36 @@
+.dropdown {
+  border-radius: var(--border-radius);
+  border: 2px solid var(--color-text);
+  padding: var(--margin-block);
+}
+
+.trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  border: none;
+  width: 100%;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.title {
+  font: var(--font-text);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.dropdownIcon {
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.open .dropdownIcon {
+  transform: rotate(90deg);
+}
+
+.open .fields {
+  margin-top: var(--margin-block);
+  height: var(--height);
+}

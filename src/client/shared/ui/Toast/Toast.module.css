@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  padding: 10px 15px;
+  max-width: 300px;
+  border-radius: 10px;
+  opacity: 0;
+  background-color: var(--color-accent-light);
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.message {
+  margin-right: 15px;
+  font: var(--font-text);
+  color: var(--color-bg);
+}
+
+.closeBtn {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.closeBtn:focus {
+  outline: none;
+}
+
+.closeIcon path {
+  fill: var(--color-bg);
+  transition: fill 0.3s ease-in-out;
+}
+
+.closeBtn:focus-visible .closeIcon path {
+  fill: var(--color-accent-darken);
+}
+
+@media (hover: hover) {
+  .closeBtn:hover .closeIcon path {
+    fill: var(--color-accent-darken);
+  }
+}
+
+.closeBtn:active .closeIcon path {
+  fill: var(--color-accent-light);
+}

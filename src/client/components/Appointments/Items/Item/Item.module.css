@@ -1,0 +1,154 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--margin-block);
+  padding: var(--margin-block);
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg-component);
+  max-height: 500px;
+  transition: max-height 0.5s ease-in-out, background-color 0.5s ease-in-out,
+    opacity 0.5s ease-in-out;
+}
+
+.done.container,
+.deleted.container {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.done.container {
+  background-color: var(--color-success);
+}
+
+.deleted.container {
+  background-color: var(--color-error);
+}
+
+.link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.date {
+  font: var(--font-h1);
+  color: var(--color-text);
+}
+
+.client {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  gap: var(--margin-block);
+}
+
+.name,
+.phone {
+  font: var(--font-text);
+  color: var(--color-text);
+}
+
+.phone {
+  text-decoration: none;
+}
+
+.phone:focus {
+  outline: none;
+}
+
+.phone:focus-visible {
+  color: var(--color-accent-light);
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 10px;
+  max-width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service {
+  font: var(--font-text);
+  color: var(--color-text);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.action:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.action {
+  display: flex;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.actionIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.action:focus {
+  outline: none;
+}
+
+.action:focus-visible .actionIcon {
+  --color: var(--color-accent-light);
+}
+
+@media (hover: hover) {
+  .phone:hover {
+    color: var(--color-accent-light);
+  }
+  .action:hover .actionIcon {
+    --color: var(--color-accent-light);
+  }
+}
+
+.phone:active {
+  color: var(--color-accent-darken);
+}
+
+.action:active {
+  --color: var(--color-accent-darken);
+}
+
+@media (max-width: 650px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 25px;
+  }
+  .date {
+    order: 0;
+  }
+  .client {
+    order: 2;
+    flex-direction: row;
+    margin-right: 0;
+  }
+  .services {
+    order: 3;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .actions {
+    order: 1;
+    grid-row: span 3;
+    align-self: center;
+  }
+}

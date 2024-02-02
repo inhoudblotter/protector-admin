@@ -1,0 +1,16 @@
+.container {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  padding: 0 var(--padding-container);
+  max-height: 100vh;
+  overflow: auto;
+}
+
+div.open {
+  transform: translateY(0);
+  opacity: 1;
+}

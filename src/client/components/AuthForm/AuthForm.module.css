@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--margin-block);
+  padding: var(--padding-container);
+  border-radius: 10px;
+  background-color: var(--color-bg-component);
+}

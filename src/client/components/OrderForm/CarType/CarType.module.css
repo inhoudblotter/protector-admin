@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+}
+
+.radio {
+  position: relative;
+  flex-grow: 1;
+}
+
+.radio:first-child {
+  margin-right: 5px;
+}
+
+.input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.label {
+  display: flex;
+  padding: 0.5em;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent-light);
+  font: var(--font-text);
+  color: var(--color-bg);
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.radio:first-child .label {
+  border-radius: 10px 0 0 10px;
+}
+
+.radio:last-child .label {
+  border-radius: 0 10px 10px 0;
+}
+
+.input:checked + .label {
+  background-color: var(--color-accent-darken);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:focus-visible + .label {
+  background-color: var(--color-accent-darken);
+}
+
+@media (hover: hover) {
+  .input:hover + .label {
+    background-color: var(--color-accent-darken);
+  }
+}

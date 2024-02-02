@@ -1,0 +1,36 @@
+.container {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 5px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow);
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.color {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color);
+}
+
+.value,
+.label {
+  font: var(--font-caption);
+  color: var(--color-text);
+}

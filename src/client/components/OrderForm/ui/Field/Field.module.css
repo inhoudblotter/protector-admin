@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.label {
+  margin-right: var(--margin-block);
+  font: var(--font-text);
+  color: var(--color-text);
+}
+
+.input {
+  flex-grow: 1;
+  max-width: 173px;
+}

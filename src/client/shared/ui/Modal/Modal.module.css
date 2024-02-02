@@ -1,0 +1,72 @@
+.background {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  padding: var(--margin-block);
+  background-color: transparent;
+  opacity: 0;
+  overflow: auto;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.background.open {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: var(--margin-block);
+  border-radius: 25px;
+  background-color: var(--color-bg-component);
+  transform: translateY(-25px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.open .container {
+  transform: translateY(0);
+}
+
+.closeBtn {
+  display: flex;
+  align-self: flex-end;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.content {
+  height: 100%;
+}
+
+.closeIcon path {
+  transition: fill 0.3s ease-in-out;
+}
+
+.closeBtn:focus {
+  outline: none;
+}
+
+.closeBtn:focus-visible .closeIcon path {
+  fill: var(--color-accent-light);
+}
+
+@media (hover: hover) {
+  .closeBtn:hover .closeIcon path {
+    fill: var(--color-accent-light);
+  }
+}
+
+.closeBtn:active .closeIcon path {
+  fill: var(--color-accent-darken);
+}

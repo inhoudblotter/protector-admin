@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--margin-block);
+}
+
+.action {
+  display: flex;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.next {
+  transform: rotate(180deg);
+}
+
+.date {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  font: var(--font-text);
+  color: var(--color-text);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.date:focus {
+  outline: none;
+}
+
+.date:focus-visible {
+  color: var(--color-bg);
+  background-color: var(--color-accent-light);
+}
+
+@media (hover: hover) {
+  .date:hover {
+    color: var(--color-bg);
+    background-color: var(--color-accent-light);
+  }
+}
+
+.date:active {
+  color: var(--color-bg);
+  background-color: var(--color-accent-darken);
+}
+
+.date:disabled {
+  color: var(--color-text);
+  background-color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+
+.icon path {
+  transition: fill 0.3s ease-in-out;
+}
+
+.action:disabled {
+  opacity: 0.3;
+}
+
+.action:focus {
+  outline: none;
+}
+
+.action:focus-visible .icon path {
+  fill: var(--color-accent-light);
+}
+
+@media (hover: hover) {
+  .action:hover .icon path {
+    fill: var(--color-accent-light);
+  }
+}
+
+.action:active .icon path {
+  fill: var(--color-accent-darken);
+}

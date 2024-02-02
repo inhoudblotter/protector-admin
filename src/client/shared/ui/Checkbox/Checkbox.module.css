@@ -1,0 +1,66 @@
+.container {
+  --input-size: 25px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.input {
+  margin-right: 15px;
+  height: var(--input-size);
+  width: var(--input-size);
+  opacity: 0;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border: 2px solid var(--color-text);
+  border-radius: 5px;
+  height: var(--input-size);
+  width: var(--input-size);
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.icon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: center / contain
+    url('data:image/svg+xml,<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12.6111L8.92308 17.5L20 6.5" stroke="%23333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.input:checked + .icon {
+  border-color: var(--color-success);
+}
+
+.input:checked + .icon::after {
+  opacity: 1;
+}
+
+.label {
+  margin: 0;
+  font: var(--font-text);
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.lighten :checked + .icon {
+  border-color: var(--color-text);
+  opacity: 0.5;
+}
+
+@media (max-width: 964px) {
+  .container {
+    --input-size: 20px;
+  }
+}

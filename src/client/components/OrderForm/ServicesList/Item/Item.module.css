@@ -1,0 +1,50 @@
+.container {
+  position: relative;
+  padding: var(--margin-block);
+  background-color: var(--color-bg-component);
+  border-radius: 10px;
+}
+
+.container.checked {
+  background-color: var(--color-accent-darken);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.input {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.label {
+  font: var(--font-text);
+  color: var(--color-text);
+}
+
+.checked .label {
+  color: var(--color-bg);
+}
+
+svg.icon {
+  --color: var(--color-bg);
+  width: 25px;
+  height: 25px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.checked .icon {
+  opacity: 1;
+}

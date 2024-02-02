@@ -1,0 +1,35 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-bg);
+  font: var(--font-text);
+  color: var(--color-text);
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.label {
+  margin-right: 10px;
+  text-align: start;
+}
+
+.icon {
+  opacity: 0;
+  --color: var(--color-bg);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.active .btn {
+  background-color: var(--color-accent-darken);
+  color: var(--color-bg);
+}
+
+.active .icon {
+  opacity: 1;
+}

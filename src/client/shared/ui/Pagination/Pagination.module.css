@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  font: var(--font-text);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+.btn.active {
+  color: var(--color-firm);
+}

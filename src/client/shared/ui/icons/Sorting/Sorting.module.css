@@ -1,0 +1,13 @@
+.icon {
+  --color: var(--color-text);
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon.desc {
+  transform: scale(1, -1);
+}
+
+.icon path {
+  stroke: var(--color);
+  transition: stroke 0.3s ease-in-out;
+}

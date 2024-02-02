@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.label {
+  margin-right: 10px;
+  width: 100%;
+  font: var(--font-text);
+  color: var(--color-text);
+}
+
+.input {
+  min-width: 100px;
+}

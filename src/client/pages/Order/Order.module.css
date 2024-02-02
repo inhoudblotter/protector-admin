@@ -1,0 +1,10 @@
+.loaderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.loader {
+  --loader-color: var(--color-accent-darken);
+}

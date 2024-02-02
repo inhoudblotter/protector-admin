@@ -1,0 +1,12 @@
+.btn {
+  display: flex;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-accent-darken);
+  cursor: pointer;
+}
+
+.icon {
+  --color: var(--color-bg);
+}

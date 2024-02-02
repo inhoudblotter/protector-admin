@@ -1,0 +1,53 @@
+.btn {
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  font: var(--font-text);
+  color: var(--color-text);
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:focus-visible {
+  background-color: var(--color-accent-light);
+  color: var(--color-bg);
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background-color: var(--color-accent-light);
+    color: var(--color-bg);
+  }
+}
+
+.btn:active {
+  background-color: var(--color-accent-darken);
+  color: var(--color-bg);
+}
+
+.btn.busy,
+.btn.disabled {
+  background-color: transparent;
+  cursor: default;
+}
+
+.btn.busy {
+  color: var(--color-error);
+}
+
+.btn.disabled {
+  opacity: 0.3;
+  color: var(--color-text);
+}
+
+@media (max-width: 964px) {
+  .btn {
+    padding: 10px;
+  }
+}

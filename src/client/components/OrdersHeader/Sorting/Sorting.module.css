@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+}
+
+.btn {
+  display: flex;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color-accent-darken);
+  cursor: pointer;
+}
+
+.icon {
+  --color: var(--color-bg);
+}
+
+.open ul {
+  opacity: 1;
+  transform: translateY(0);
+}

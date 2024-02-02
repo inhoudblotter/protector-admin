@@ -1,0 +1,47 @@
+.items {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 5px);
+  left: 50%;
+  margin: 0;
+  padding: 5px 0;
+  border-radius: 10px;
+  background-color: var(--color-bg);
+  opacity: 0;
+  transform: translateY(-10px) translateX(-50%);
+  list-style: none;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.option {
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  font: var(--font-text);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.option:focus {
+  outline: none;
+}
+
+.option:focus-visible {
+  background-color: var(--color-accent-light);
+  color: var(--color-bg);
+}
+
+@media (hover: hover) {
+  .option:hover {
+    background-color: var(--color-accent-light);
+    color: var(--color-bg);
+  }
+}
+
+.option:active {
+  background-color: var(--color-accent-darken);
+  color: var(--color-bg);
+}

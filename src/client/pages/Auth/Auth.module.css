@@ -1,0 +1,9 @@
+.section {
+  display: flex;
+  padding: var(--padding-container);
+  min-height: 100vh;
+}
+
+.container {
+  margin: auto;
+}

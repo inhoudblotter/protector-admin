@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: var(--margin-block);
+  margin: 0 auto;
+  padding: var(--margin-block);
+  width: 100%;
+  max-width: 950px;
+}
+
+.tabs {
+  margin-right: auto;
+}
+
+@media (max-width: 1023px) {
+  .container {
+    max-width: 875px;
+  }
+}
+
+@media (max-width: 963px) {
+  .container {
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    max-width: 100%;
+  }
+}

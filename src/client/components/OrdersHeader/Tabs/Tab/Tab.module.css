@@ -1,0 +1,27 @@
+.tab {
+  position: relative;
+  font: var(--font-text);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.tab::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-accent-darken);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tab.active {
+  color: var(--color-accent-darken);
+}
+
+.tab.active::after {
+  transform: scaleX(1);
+}

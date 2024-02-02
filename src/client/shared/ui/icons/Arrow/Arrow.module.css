@@ -1,0 +1,8 @@
+.icon {
+  --color: var(--color-text);
+}
+
+.icon path {
+  fill: var(--color);
+  transition: fill 0.3s ease-in-out;
+}

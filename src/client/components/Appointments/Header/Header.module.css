@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.value {
+  display: block;
+  padding: 10px;
+  font: var(--font-h1);
+  color: var(--color-text);
+}
+
+button.value {
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+button.value:focus {
+  outline: none;
+}
+
+button.value:focus-visible {
+  background-color: var(--color-accent-light);
+  color: var(--color-bg);
+}
+
+.action {
+  display: flex;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.actionIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.next {
+  transform: rotate(180deg);
+}
+
+.action:focus {
+  outline: none;
+}
+
+.action:focus-visible .actionIcon {
+  --color: var(--color-accent-light);
+}
+
+@media (hover: hover) {
+  .action:hover .actionIcon {
+    --color: var(--color-accent-light);
+  }
+
+  button.value:hover {
+    background-color: var(--color-accent-light);
+    color: var(--color-bg);
+  }
+}
+
+.action:active .actionIcon {
+  --color: var(--color-accent-darken);
+}
+
+button.value:active {
+  background-color: var(--color-accent-darken);
+  color: var(--color-bg);
+}
