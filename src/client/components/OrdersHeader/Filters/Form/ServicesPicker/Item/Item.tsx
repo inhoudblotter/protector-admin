@@ -12,9 +12,7 @@ interface IItem extends h.JSX.HTMLAttributes<HTMLLIElement> {
 }
 
 export function Item({ name, value, selectedItems, setSelectedItems }: IItem) {
-  const [isActive, setActive] = useState(
-    selectedItems.includes(value) ? true : false
-  );
+  const [isActive, setActive] = useState(selectedItems.includes(value));
   function handleClick() {
     if (!isActive) {
       setSelectedItems([...selectedItems, value]);

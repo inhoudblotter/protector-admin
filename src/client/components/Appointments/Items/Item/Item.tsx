@@ -32,7 +32,7 @@ export function Item({ appointment, class: className, refreshItems }: IItem) {
         )}
         ref={ref}
       >
-        <Link class={styles.link} href={"/orders/" + appointment.id}></Link>
+        <Link class={styles.link} href={`/orders/${appointment.id}`} />
         {appointment.date && (
           <span class={styles.date}>
             {new Date(appointment.date).toLocaleTimeString("ru-RU", {
@@ -52,7 +52,7 @@ export function Item({ appointment, class: className, refreshItems }: IItem) {
         </div>
         <ul class={styles.services}>
           {appointment.services.map((s) => (
-            <li class={styles.service}>
+            <li key={s} class={styles.service}>
               {SERVICES[s as keyof typeof SERVICES].name}
             </li>
           ))}

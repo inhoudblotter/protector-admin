@@ -1,3 +1,4 @@
+import { RefObject } from "preact";
 import { useRef, useState, useCallback, useEffect } from "preact/hooks";
 import { useCloseByClickOutside } from "./useCloseByClickOutside";
 
@@ -9,9 +10,9 @@ export function useDropdown<
   openClass: string,
   onClose?: () => void
 ): {
-  triggerRef: React.RefObject<Trigger>;
-  contentRef: React.RefObject<Content>;
-  dropdownRef: React.RefObject<Dropdown>;
+  triggerRef: RefObject<Trigger>;
+  contentRef: RefObject<Content>;
+  dropdownRef: RefObject<Dropdown>;
   isOpen: boolean;
   open: () => void;
   close: (callback?: () => void) => void;

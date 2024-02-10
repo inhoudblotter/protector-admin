@@ -13,7 +13,7 @@ interface ISettingsContext {
   settings: ISettings | undefined;
   status: IStatus;
   load: () => void;
-  update: (v: ISettings) => void;
+  update: (s: ISettings) => void;
 }
 
 export const SettingsContext = createContext<ISettingsContext>({
@@ -46,7 +46,7 @@ export function SettingsProvider({ children }: IProvider) {
           throw error;
         }
       });
-  }, [setSettings]);
+  }, [setSettings, setAction]);
 
   const update = useCallback(
     (newValues: ISettings) => {

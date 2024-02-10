@@ -56,7 +56,7 @@ export function Board({ ...props }: IBoard) {
           });
         } else throw error;
       });
-  }, [routerArgs.url, settings]);
+  }, [routerArgs.url, settings, loadSettings, setAlertAction]);
   return (
     <main class={styles.container} {...props}>
       <RangeSelect />

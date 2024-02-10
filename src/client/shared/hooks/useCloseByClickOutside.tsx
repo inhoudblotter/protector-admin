@@ -1,11 +1,12 @@
+import { RefObject } from "preact";
 import { useCallback, useId } from "preact/hooks";
 
 export function useCloseByClickOutside<
   Outside extends HTMLElement,
   Inside extends HTMLElement
 >(
-  outsideRef: React.RefObject<Outside>,
-  insideRef: React.RefObject<Inside>,
+  outsideRef: RefObject<Outside>,
+  insideRef: RefObject<Inside>,
   closeFunction: () => void
 ) {
   const id = useId();

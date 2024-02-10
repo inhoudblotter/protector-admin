@@ -30,7 +30,7 @@ export function Form({ onClose }: IForm) {
     if (username) query.set("name", username);
     if (phone) query.set("phone", cleanPhone(phone));
     if (services.length) query.set("services", services.join(","));
-    route(args.path + "?" + query);
+    route(`${args.path}?${query}`);
     setModalClose(true);
   }
   return (

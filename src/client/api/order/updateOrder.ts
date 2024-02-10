@@ -2,7 +2,7 @@ import { IOrder } from "src/client/shared/types/IOrder";
 
 export async function updateOrder(order: IOrder & { id: number }) {
   const res = await fetch(
-    import.meta.env.VITE_API_HOST + `/order/${order.id}`,
+    `${import.meta.env.VITE_API_HOST}/order/${order.id}`,
     {
       method: "PATCH",
       mode: "cors",
@@ -16,5 +16,6 @@ export async function updateOrder(order: IOrder & { id: number }) {
   const data = (await res.json()) as { id: number };
   if (res.ok) {
     return data.id;
-  } else throw data;
+  }
+  throw data;
 }

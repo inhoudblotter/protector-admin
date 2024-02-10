@@ -30,7 +30,7 @@ export function Alert({
     return () => {
       if (timeout) clearTimeout(timeout);
     };
-  }, [closeFunc, lifeTime, openClass]);
+  }, [closeFunc, lifeTime, openClass, outerRef]);
   return (
     <div class={cn(styles.container, styles[type])} ref={outerRef}>
       <span class={styles.message}>{message}</span>

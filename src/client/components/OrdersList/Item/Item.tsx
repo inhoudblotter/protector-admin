@@ -31,7 +31,7 @@ export function Item({ order, class: className, refreshItems }: IItem) {
         )}
         ref={ref}
       >
-        <Link class={styles.link} href={"/orders/" + order.id}></Link>
+        <Link class={styles.link} href={`/orders/${order.id}`} />
         <span class={styles.id}>{order.id}</span>
         <div class={styles.client}>
           <span class={styles.name}>{order.client.name}</span>
@@ -44,7 +44,7 @@ export function Item({ order, class: className, refreshItems }: IItem) {
         </div>
         <ul class={styles.services}>
           {order.services.map((s) => (
-            <li class={styles.service}>
+            <li key={s} class={styles.service}>
               {SERVICES[s as keyof typeof SERVICES].name}
             </li>
           ))}

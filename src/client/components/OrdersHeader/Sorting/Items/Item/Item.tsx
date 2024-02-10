@@ -15,9 +15,7 @@ interface IItem extends h.JSX.HTMLAttributes<HTMLLIElement> {
 export function Item({ name, value, closeFunction }: IItem) {
   const [args, route] = useRouter();
   const params = useMemo(() => parseQuery(args.url), [args.url]);
-  const [isActive, setActive] = useState(
-    params.sortBy === value ? true : false
-  );
+  const [isActive, setActive] = useState(params.sortBy === value);
   const [direction, setDirection] = useState<"asc" | "desc">(
     params.sortBy === value && params.sortDirection
       ? (params.sortDirection as "asc" | "desc")
@@ -36,7 +34,7 @@ export function Item({ name, value, closeFunction }: IItem) {
     query.set("sortBy", value);
     query.set("sortDirection", d);
     setActive(true);
-    route(args.path + "?" + query);
+    route(`${args.path}?${query}`);
     closeFunction();
   }
   return (

@@ -9,8 +9,8 @@ export function Loader({ class: className }: ILoader) {
   return (
     <div class={cn(styles.loader, className)}>
       <div class={styles.lines}>
-        <span class={styles.line}></span>
-        <span class={styles.line}></span>
+        <span class={styles.line} />
+        <span class={styles.line} />
       </div>
       <Car class={styles.car} />
     </div>

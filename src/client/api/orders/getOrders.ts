@@ -5,7 +5,7 @@ export async function getOrders(
   isOld: boolean = false
 ): Promise<{ data: IOrderResponse[]; totalCount: number; offset: number }> {
   const res = await fetch(
-    import.meta.env.VITE_API_HOST + `/orders${isOld ? "/old" : ""}?` + params,
+    `${import.meta.env.VITE_API_HOST}/orders${isOld ? "/old" : ""}?${params}`,
     {
       mode: "cors",
       credentials: "include",
@@ -14,5 +14,6 @@ export async function getOrders(
   const data = await res.json();
   if (res.ok) {
     return data;
-  } else throw data;
+  }
+  throw data;
 }

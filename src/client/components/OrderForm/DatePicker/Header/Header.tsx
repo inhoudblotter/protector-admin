@@ -36,7 +36,7 @@ export function Header({
     const currentDate = new Date(value);
     currentDate.setDate(currentDate.getDate() - 1);
     setValue(currentDate.toISOString());
-  }, [value, setValue]);
+  }, [value, setValue, isToday]);
   const nextMonth = useCallback(() => {
     const currentDate = new Date(value);
     currentDate.setMonth(currentDate.getMonth() + 1);

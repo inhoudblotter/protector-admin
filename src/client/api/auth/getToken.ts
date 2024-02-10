@@ -1,6 +1,6 @@
 export async function getToken(): Promise<string> {
   const res = await fetch(
-    import.meta.env.VITE_API_HOST + "/auth/register/new",
+    `${import.meta.env.VITE_API_HOST}/auth/register/new`,
     {
       mode: "cors",
       credentials: "include",

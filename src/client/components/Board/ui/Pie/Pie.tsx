@@ -53,7 +53,7 @@ export function Pie({ values, isLoading, class: className }: IPie) {
   return (
     <div class={cn(styles.container, className)}>
       {!processed.length || isLoading ? (
-        <div class={styles.loader}></div>
+        <div class={styles.loader} />
       ) : (
         <>
           <Legend values={processed} class={styles.legend} />
@@ -64,7 +64,7 @@ export function Pie({ values, isLoading, class: className }: IPie) {
                 .map((el) => `${el.color} ${el.range}`)
                 .join(", ")})`,
             }}
-          ></div>
+          />
         </>
       )}
     </div>

@@ -13,4 +13,5 @@ module.exports = {
     sourceType: "module",
   },
   rules: {},
+  ignorePatterns: ["**/*.d.js"],
 };

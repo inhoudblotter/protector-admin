@@ -39,7 +39,7 @@ export function CheckoutForm({
     } else {
       setValue(calculatePrice(settings, order).toString());
     }
-  }, [settings, loadSettings]);
+  }, [settings, loadSettings, order]);
   const handleSubmit = useCallback(async () => {
     setLoading(true);
     await setPrice(order_id, Number(value))
@@ -58,7 +58,7 @@ export function CheckoutForm({
       .finally(() => {
         setLoading(false);
       });
-  }, [value, order_id, setLoading]);
+  }, [value, order_id, setLoading, onClose, onDone, setAction]);
   return (
     <Modal onClose={onClose} contentClass={styles.container}>
       {["loading", "notLoaded"].includes(settingsStatus) ? (
@@ -70,7 +70,7 @@ export function CheckoutForm({
             class={styles.input}
             value={value}
             onChange={(e) => setValue(e.currentTarget.value)}
-          ></Input>
+          />
           <Button onClick={handleSubmit} isLoading={isLoading}>
             Завершить
           </Button>

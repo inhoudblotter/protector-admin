@@ -16,6 +16,7 @@ export function ServicesPicker({
     <ul class={styles.container}>
       {Object.entries(SERVICES).map(([k, v]) => (
         <Item
+          key={k}
           name={v.name}
           value={k}
           selectedItems={selectedItems}

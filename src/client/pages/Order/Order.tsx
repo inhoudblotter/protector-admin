@@ -1,16 +1,17 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
 import { Nav } from "src/client/components/Nav";
 import { OrderForm } from "src/client/components/OrderForm";
-import { IOrder } from "src/client/shared/types/IOrder";
 import { useRouter } from "preact-router";
 import { getOrder } from "src/client/api/order/getOrder";
 import { Loader } from "src/client/shared/ui/Loader";
 import styles from "./Order.module.css";
+import { IOrderResponse } from "src/client/shared/types/IOrderResponse";
+
 interface IOrderPage {
-  preloadState?: { order: IOrder };
+  preloadState?: { order: IOrderResponse };
 }
 
-export function Order({ preloadState }: IOrderPage) {
+export default function Order({ preloadState }: IOrderPage) {
   const [args, route] = useRouter();
 
   const id = useMemo(() => {
@@ -20,9 +21,9 @@ export function Order({ preloadState }: IOrderPage) {
       if (isNaN(id)) route("/not-found", true);
       return id;
     }
-  }, [args.path, args.url]);
+  }, [args.path, args.url, route]);
   const [order, setOrder] = useState(preloadState?.order || undefined);
-  const [isLoading, setLoading] = useState(id && !order ? true : false);
+  const [isLoading, setLoading] = useState(!!(id && !order));
 
   useEffect(() => {
     if (!order && id) {
@@ -37,7 +38,7 @@ export function Order({ preloadState }: IOrderPage) {
           if (error.code === 500) route("/server-error", true);
         });
     }
-  }, [order, id, setLoading]);
+  }, [order, id, setLoading, route]);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { Appointments } from "src/client/components/Appointments";
 import { Nav } from "src/client/components/Nav";
 
-export function Home() {
+export default function Home() {
   return (
     <>
       <Nav />

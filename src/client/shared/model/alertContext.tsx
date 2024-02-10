@@ -1,6 +1,6 @@
 import { createContext } from "preact";
 import { IProvider } from "./types/IProvider";
-import { useCallback, useState } from "preact/hooks";
+import { useState } from "preact/hooks";
 
 interface IAlert {
   message: string;

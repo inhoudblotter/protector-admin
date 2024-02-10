@@ -1,3 +1,3 @@
 export function cleanPhone(phone: string) {
-  return phone.replaceAll(/[\s\(\)]+/g, "");
+  return phone.replaceAll(/[\s()]+/g, "");
 }

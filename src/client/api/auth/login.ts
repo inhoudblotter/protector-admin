@@ -1,5 +1,5 @@
 export async function login(username: string, password: string) {
-  const res = await fetch(import.meta.env.VITE_API_HOST + "/auth/login", {
+  const res = await fetch(`${import.meta.env.VITE_API_HOST}/auth/login`, {
     method: "POST",
     mode: "cors",
     credentials: "include",
@@ -11,7 +11,6 @@ export async function login(username: string, password: string) {
   const data = await res.json();
   if (res.ok) {
     return data.id;
-  } else {
-    throw data;
   }
+  throw data;
 }

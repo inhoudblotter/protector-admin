@@ -23,7 +23,7 @@ export function TokenGenerator() {
         } else throw error;
       })
       .finally(() => setLoading(false));
-  }, [setLoading]);
+  }, [setLoading, setAlertAction]);
   const copy = useCallback(() => {
     if (token) {
       navigator.clipboard.writeText(token);
@@ -32,7 +32,7 @@ export function TokenGenerator() {
         payload: { type: "default", message: "Токен скопирован" },
       });
     }
-  }, [token]);
+  }, [token, setAlertAction]);
   const clear = useCallback(() => {
     setToken(null);
   }, [setToken]);

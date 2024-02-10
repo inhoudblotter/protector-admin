@@ -28,7 +28,7 @@ export function TimeList({ date, setTime, services, wheels }: ITimeList) {
           });
         } else throw error;
       });
-  }, [setFreeTime, services, wheels, setAlertAction]);
+  }, [setFreeTime, services, wheels, setAlertAction, date]);
   return (
     <ul class={styles.container}>
       {freeTime === null ? (

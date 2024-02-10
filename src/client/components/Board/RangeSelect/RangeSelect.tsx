@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "preact/hooks";
+import { useContext, useEffect, useState } from "preact/hooks";
 import styles from "./RangeSelect.module.css";
 import { Field } from "./Field";
 import { cn } from "src/client/shared/utils/cn";
@@ -38,7 +38,7 @@ export function RangeSelect({ ...props }: IRangeSelect) {
       const query = new URLSearchParams();
       query.set("from", from.toISOString());
       query.set("to", to.toISOString());
-      route("/stats?" + query.toString());
+      route(`/stats?${query}`);
     }
   }, [settings, loadSettings, range]);
   return (

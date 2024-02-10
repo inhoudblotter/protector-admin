@@ -21,7 +21,7 @@ export function Checkbox({
       ].join(" ")}
     >
       <input class={styles.input} type="checkbox" {...props} />
-      <div class={styles.icon}></div>
+      <div class={styles.icon} />
       <h3 class={styles.label}>{title}</h3>
     </label>
   );

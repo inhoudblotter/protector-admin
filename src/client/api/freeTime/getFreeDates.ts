@@ -10,10 +10,11 @@ export async function getFreeDates(
   }
 ) {
   const res = await fetch(
-    import.meta.env.VITE_API_HOST +
-      `/free-time/month/${date}?services=${order.services.join(",")}&wheels=${
-        order.wheels
-      }`,
+    `${
+      import.meta.env.VITE_API_HOST
+    }/free-time/month/${date}?services=${order.services.join(",")}&wheels=${
+      order.wheels
+    }`,
     {
       mode: "cors",
       credentials: "include",
@@ -22,5 +23,6 @@ export async function getFreeDates(
   const data = (await res.json()) as IDates | IError;
   if (!isError(data)) {
     return data;
-  } else throw data;
+  }
+  throw data;
 }

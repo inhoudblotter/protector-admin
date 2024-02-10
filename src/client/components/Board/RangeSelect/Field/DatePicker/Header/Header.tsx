@@ -1,8 +1,9 @@
 import { Arrow } from "src/client/shared/ui/icons";
 import styles from "./Header.module.css";
 import { StateUpdater, useCallback, useMemo } from "preact/hooks";
+import { h } from "preact";
 
-interface IHeader extends React.HTMLAttributes<HTMLDivElement> {
+interface IHeader extends h.JSX.HTMLAttributes<HTMLDivElement> {
   month: string;
   setMonth: StateUpdater<string>;
 }
@@ -23,7 +24,7 @@ export function Header({ month, setMonth }: IHeader) {
     const date = new Date(month);
     date.setMonth(date.getMonth() + 1);
     setMonth(date.toISOString());
-  }, [month]);
+  }, [month, setMonth]);
   return (
     <div class={styles.container}>
       <button class={styles.prevBtn} onClick={handlePrev}>

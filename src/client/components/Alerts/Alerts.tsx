@@ -41,7 +41,7 @@ export function Alerts({ lifeTime = 3000 }: IAlerts) {
       }
       setAction(undefined);
     }
-  }, [action, alerts, setAlerts, closeAlert]);
+  }, [action, alerts, setAlerts, closeAlert, setAction]);
   return (
     <div class={styles.container}>
       {!!alerts.length && (

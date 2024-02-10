@@ -19,7 +19,7 @@ export function ServicesList({ value, setValue }: IServicesList) {
         setValue([...value].filter((el) => el !== e.currentTarget.value));
       }
     },
-    [value]
+    [value, setValue]
   );
   return (
     <ul class={styles.container}>

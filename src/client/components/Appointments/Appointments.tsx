@@ -1,11 +1,10 @@
 import { getOrdersByDate } from "src/client/api/orders/getOrdersByDate";
 import styles from "./Appointments.module.css";
-import { useMemo, useState, useCallback } from "preact/hooks";
+import { useMemo, useState, useCallback, useEffect } from "preact/hooks";
 import { Header } from "./Header";
 import { Calendar } from "./Calendar";
 import { h } from "preact";
 import { useRouter } from "preact-router";
-import { useEffect } from "preact/hooks";
 import { DateToDateString } from "src/client/shared/utils/DateToDateString";
 import { Items } from "./Items/Items";
 import { parseQuery } from "src/client/shared/utils/parseQuery";
@@ -27,9 +26,9 @@ export function Appointments({ ...props }: IAppointments) {
   }, [date, setAppointments]);
 
   useEffect(() => {
-    route("/?date=" + date, false);
+    route(`/?date=${date}`, false);
     refreshItems();
-  }, [date, refreshItems]);
+  }, [date, refreshItems, route]);
   return (
     <main class={styles.container} {...props}>
       <Header type={type} setType={setType} date={date} setDate={setDate} />

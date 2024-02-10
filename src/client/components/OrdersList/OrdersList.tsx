@@ -31,10 +31,10 @@ export function OrdersList({}: IOrdersList) {
     let isOld = false;
     if (routerArgs.path) {
       const path = routerArgs.path.split("/");
-      isOld = path[path.length - 1] === "old" ? true : false;
+      isOld = path[path.length - 1] === "old";
     }
-    return [isOld, params];
-  }, [routerArgs.url]);
+    return [isOld, params, routerArgs.path];
+  }, [routerArgs.url, routerArgs.path]);
   const itemsRef = useRef<HTMLUListElement>(null);
   const [totalCount, setTotalCount] = useState(0);
   const [offset, limit, currentPage] = useMemo(() => {
@@ -69,6 +69,8 @@ export function OrdersList({}: IOrdersList) {
       })
       .finally(() => setLoading(false));
   }, [
+    isOld,
+    setAction,
     params.name,
     params.phone,
     params.services,
@@ -85,16 +87,7 @@ export function OrdersList({}: IOrdersList) {
   useEffect(() => {
     setLoading(true);
     refreshItems();
-  }, [
-    params.name,
-    params.phone,
-    params.services,
-    params.carNumber,
-    params.sortBy,
-    params.sortDirection,
-    limit,
-    offset,
-  ]);
+  }, [refreshItems]);
   return (
     <>
       {isLoading ? (
@@ -109,15 +102,15 @@ export function OrdersList({}: IOrdersList) {
             <ul class={styles.items}>
               {orders.map((order) => {
                 if (isOld) {
-                  return <DoneItem order={order} />;
-                } else
-                  return (
-                    <Item
-                      key={order.id}
-                      order={order}
-                      refreshItems={refreshItems}
-                    />
-                  );
+                  return <DoneItem key={order.id} order={order} />;
+                }
+                return (
+                  <Item
+                    key={order.id}
+                    order={order}
+                    refreshItems={refreshItems}
+                  />
+                );
               })}
             </ul>
           )}

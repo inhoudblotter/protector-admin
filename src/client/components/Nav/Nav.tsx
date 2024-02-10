@@ -20,7 +20,7 @@ export function Nav() {
     <nav class={styles.container}>
       <ul class={styles.items}>
         {ITEMS.map((item) => (
-          <li class={styles.item}>
+          <li key={item.href} class={styles.item}>
             <Link class={styles.link} href={item.href}>
               {item.icon}
             </Link>

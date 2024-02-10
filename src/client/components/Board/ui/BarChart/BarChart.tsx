@@ -67,7 +67,7 @@ export function BarChart({
             ),
           ].forEach((_, i) => {
             const hour = i + settings.work_time.from.hours;
-            xaxis.push(hour.toString().padStart(2, "0") + ":00");
+            xaxis.push(`${hour.toString().padStart(2, "0")}:00`);
             yaxis.push(
               dataset.find((el) => el.hour + 5 === hour)?.value || null
             );
@@ -103,7 +103,7 @@ export function BarChart({
       }
     }
     return [min, max, xaxis, yaxis];
-  }, [tab, values, settings]);
+  }, [tab, values, settings, loadSettings]);
 
   const handleTouch = useCallback(
     (clientX: number) => {
@@ -151,14 +151,14 @@ export function BarChart({
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [handleResize]);
 
   return (
     <div class={cn(styles.container, className)} {...props}>
       {!values || !yaxis.length || isLoading || status === "loading" ? (
         <div class={styles.loader}>
           {[...new Array(3)].map((_, i) => (
-            <div key={i} class={styles.loaderColumn}></div>
+            <div key={i} class={styles.loaderColumn} />
           ))}
         </div>
       ) : (

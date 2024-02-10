@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, RefObject } from "preact";
 import { useCallback, useMemo } from "preact/hooks";
 import styles from "./Pagination.module.css";
 import { cn } from "../../utils/cn";
@@ -9,7 +9,7 @@ interface IPagination extends h.JSX.HTMLAttributes<HTMLDivElement> {
   totalCount: number;
   currentPage: number;
   limit: number;
-  itemsRef: React.RefObject<HTMLElement>;
+  itemsRef: RefObject<HTMLElement>;
   pad?: number;
 }
 
@@ -45,7 +45,7 @@ export function Pagination({
       Object.entries(params).forEach(([k, v]) => query.set(k, v));
       const _offset = limit * (page - 1);
       query.set("offset", _offset.toString());
-      route(path + "?" + query);
+      route(`${path}?${query}`);
       if (itemsRef.current) {
         itemsRef.current.scrollIntoView({
           inline: "start",

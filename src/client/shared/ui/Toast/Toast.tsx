@@ -1,5 +1,5 @@
 import { h } from "preact";
-import { useEffect, useRef } from "preact/hooks";
+import { useCallback, useEffect, useRef } from "preact/hooks";
 import { Close } from "../icons";
 import styles from "./Toast.module.css";
 
@@ -18,13 +18,13 @@ export function Toast({
   lifeTime = 3000,
 }: IToast) {
   const ref = useRef<HTMLDivElement>(null);
-  function close() {
+  const close = useCallback(() => {
     const el = ref.current;
     if (el) {
       el.classList.remove(styles.show);
       el.addEventListener("transitionend", onClose, { once: true });
     }
-  }
+  }, [ref, onClose]);
   useEffect(() => {
     const el = ref.current;
     if (el) {

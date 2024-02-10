@@ -1,6 +1,5 @@
 import { h } from "preact";
 import { useDropdown } from "src/client/shared/hooks/useDropdown";
-import { formatTime } from "src/client/shared/utils/formatTime";
 import styles from "./TimeItem.module.css";
 import { Items } from "./Items";
 import { useMemo } from "preact/hooks";

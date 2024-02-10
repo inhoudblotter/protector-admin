@@ -15,7 +15,7 @@ export function Items({ outerRef, values, onMount, class: className }: IItems) {
     <ul class={cn(styles.container, className)} ref={outerRef}>
       {values.map((el, i) => (
         <li class={styles.item} key={i}>
-          <span class={styles.color} style={{ "--color": el.color }}></span>
+          <span class={styles.color} style={{ "--color": el.color }} />
           <span class={styles.label}>{el.label}</span>
           <span class={styles.value}>{el.value}</span>
         </li>

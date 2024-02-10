@@ -10,10 +10,11 @@ export async function getFreeTimes(
   }
 ) {
   const res = await fetch(
-    import.meta.env.VITE_API_HOST +
-      `/free-time/day/${date}?services=${order.services.join(",")}&wheels=${
-        order.wheels
-      }`,
+    `${
+      import.meta.env.VITE_API_HOST
+    }/free-time/day/${date}?services=${order.services.join(",")}&wheels=${
+      order.wheels
+    }`,
     {
       mode: "cors",
       credentials: "include",
@@ -22,5 +23,6 @@ export async function getFreeTimes(
   const data = (await res.json()) as ITimes | IError;
   if (!isError(data)) {
     return data;
-  } else throw data;
+  }
+  throw data;
 }

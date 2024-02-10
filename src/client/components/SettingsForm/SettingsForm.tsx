@@ -15,6 +15,9 @@ import { SettingsContext } from "src/client/shared/model/settingsContext";
 import { ISocials } from "src/client/shared/types/ISocials";
 import { IAddress } from "src/client/shared/types/IAddress";
 import { TokenGenerator } from "./TokenGenerator/TokenGenerator";
+import { formatTime } from "src/client/shared/utils/formatTime";
+import { onChangeFormatTime } from "./utils/onChangeFormatTime";
+import { JSXInternal } from "node_modules/preact/src/jsx";
 
 export function SettingsForm() {
   const {
@@ -28,6 +31,10 @@ export function SettingsForm() {
     house: "",
     latitude: 0,
     longitude: 0,
+  });
+  const [workTime, setWorkTime] = useState<{ from: string; to: string }>({
+    from: "00:00",
+    to: "00:00",
   });
   const [phone, setPhone] = useState("");
   const [socials, setSocials] = useState<ISocials>({
@@ -122,11 +129,17 @@ export function SettingsForm() {
     },
   });
 
-  function update(e: React.TargetedEvent<HTMLFormElement>) {
+  function update(e: JSXInternal.TargetedEvent<HTMLFormElement, Event>) {
     e.preventDefault();
+    const workStart = workTime.from.split(":").map((el) => Number(el));
+    const workEnd = workTime.to.split(":").map((el) => Number(el));
     updateSettings({
       phone: cleanPhone(phone),
-      address: address,
+      work_time: {
+        from: { hours: workStart[0], minutes: workStart[1] },
+        to: { hours: workEnd[0], minutes: workEnd[1] },
+      },
+      address,
       socials,
       services: {
         complex,
@@ -144,6 +157,16 @@ export function SettingsForm() {
 
   useEffect(() => {
     if (settings) {
+      setWorkTime({
+        from: `${formatTime(settings.work_time.from.hours)}:${formatTime(
+          settings.work_time.from.minutes
+        )}`,
+        to: `${settings.work_time.to.hours
+          .toString()
+          .padStart(2, "0")}:${settings.work_time.to.minutes
+          .toString()
+          .padStart(2, "0")}`,
+      });
       setAddress(settings.address);
       setSocials(settings.socials);
       setPhone(settings.phone);
@@ -157,7 +180,7 @@ export function SettingsForm() {
       setCut(settings.services.cut);
       setStorage(settings.services.storage);
     } else loadSettings();
-  }, [settings]);
+  }, [settings, loadSettings]);
   if (["loading", "notLoaded"].includes(settingsStatus))
     return (
       <div class={styles.loaderContainer}>
@@ -205,6 +228,24 @@ export function SettingsForm() {
                   ...address,
                   longitude: Number(e.currentTarget.value) || 0,
                 });
+              }}
+            />
+          </Fieldset>
+          <Fieldset title="Рабочее время" class={styles.workTime}>
+            <Input
+              placeholder={"Начало"}
+              maxLength={5}
+              value={workTime.from}
+              onChange={(e) => {
+                setWorkTime({ ...workTime, from: onChangeFormatTime(e) });
+              }}
+            />
+            <Input
+              placeholder={"Конец"}
+              maxLength={5}
+              value={workTime.from}
+              onChange={(e) => {
+                setWorkTime({ ...workTime, from: onChangeFormatTime(e) });
               }}
             />
           </Fieldset>

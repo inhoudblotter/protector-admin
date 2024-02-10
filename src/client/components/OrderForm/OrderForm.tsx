@@ -63,7 +63,7 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
     }
     setNeedCarType(needCarType);
     setNeedDate(needDate);
-  }, [services.length, setNeedCarType, setNeedDate]);
+  }, [services, setNeedCarType, setNeedDate]);
 
   function onSubmit(e: TargetedEvent<HTMLFormElement, Event>) {
     e.preventDefault();

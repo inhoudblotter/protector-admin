@@ -4,7 +4,7 @@ export async function register(
   token: string
 ) {
   const res = await fetch(
-    import.meta.env.VITE_API_HOST + `/auth/register?token=${token}`,
+    `${import.meta.env.VITE_API_HOST}/auth/register?token=${token}`,
     {
       method: "POST",
       mode: "cors",
@@ -18,7 +18,6 @@ export async function register(
   const data = await res.json();
   if (res.ok) {
     return data.id;
-  } else {
-    throw data;
   }
+  throw data;
 }

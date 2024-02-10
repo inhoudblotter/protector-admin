@@ -16,7 +16,7 @@ export function Items({ onMount, closeFunction, items, outerRef }: IItems) {
   return (
     <ul class={styles.container} ref={outerRef}>
       {items.map((item) => (
-        <Item closeFunction={closeFunction} {...item} />
+        <Item key={item.value} closeFunction={closeFunction} {...item} />
       ))}
     </ul>
   );

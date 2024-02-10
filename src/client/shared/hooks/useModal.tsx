@@ -1,4 +1,4 @@
-import { useCallback, useRef, useEffect, useState, useId } from "preact/hooks";
+import { useCallback, useRef, useEffect, useState } from "preact/hooks";
 import { useCloseByClickOutside } from "./useCloseByClickOutside";
 
 interface IUseModal {
@@ -40,7 +40,7 @@ export function useModal<
       bg.classList.remove(openStyle);
       bg.addEventListener("transitionend", delayedClose);
     }
-  }, [backgroundRef, delayedClose]);
+  }, [backgroundRef, delayedClose, openStyle]);
 
   const { onContentMount } = useCloseByClickOutside(
     backgroundRef,

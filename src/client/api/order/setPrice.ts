@@ -1,5 +1,5 @@
 export async function setPrice(id: number, price: number) {
-  const res = await fetch(import.meta.env.VITE_API_HOST + `/order/${id}`, {
+  const res = await fetch(`${import.meta.env.VITE_API_HOST}/order/${id}`, {
     method: "PATCH",
     mode: "cors",
     credentials: "include",

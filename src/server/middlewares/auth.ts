@@ -7,7 +7,8 @@ export async function auth(req: Request, res: Response, next: NextFunction) {
     const id = await isLogined(req.cookies.token);
     if (id) {
       return next();
-    } else throw new Error("Authentication failed");
+    }
+    throw new Error("Authentication failed");
   } catch (error) {
     if (isError(error) && error.code === 401) {
       return res.redirect("/login");

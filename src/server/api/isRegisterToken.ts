@@ -3,7 +3,7 @@ import { IError } from "../types/IError";
 
 export async function isRegisterToken(token: string) {
   const res = await fetch(
-    process.env.VITE_API_HOST + `/auth/register/${token}`,
+    `${process.env.VITE_API_HOST}/auth/register/${token}`,
     {
       mode: "cors",
     }

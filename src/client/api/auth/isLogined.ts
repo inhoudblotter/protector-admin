@@ -1,5 +1,5 @@
 export async function isLogined(): Promise<number> {
-  const res = await fetch(import.meta.env.VITE_API_HOST + "/auth", {
+  const res = await fetch(`${import.meta.env.VITE_API_HOST}/auth`, {
     mode: "cors",
     credentials: "include",
   });

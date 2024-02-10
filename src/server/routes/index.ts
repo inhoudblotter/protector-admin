@@ -47,7 +47,8 @@ router.get("/register", async (req, res) => {
     }
     const html = await req.renderPage("/register", "");
     return res.status(200).set({ "Content-Type": "text/html" }).end(html);
-  } else return res.redirect("/not-found");
+  }
+  return res.redirect("/not-found");
 });
 
 router.get("/settings", async (req, res) => {

@@ -21,7 +21,7 @@ export function DoneItem({ class: className, order }: IDoneItem) {
       </div>
       <ul class={styles.services}>
         {order.services.map((s) => (
-          <li class={styles.service}>
+          <li key={s} class={styles.service}>
             {SERVICES[s as keyof typeof SERVICES].name}
           </li>
         ))}
