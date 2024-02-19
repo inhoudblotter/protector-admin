@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ["./src/components/**/*.jsx"],
+    include: ["./src/**/*.jsx"],
   },
   plugins: [preact()],
 });

@@ -4,9 +4,9 @@
   min-height: 100vh;
 }
 
-.loader {
+div.loader {
   margin: auto;
-  --loader-color: var(--color-accent-darken);
+  --loader-color: var(--color-text);
 }
 
 .form,
@@ -24,7 +24,13 @@
 }
 
 .workTime {
+  display: flex;
   flex-direction: row;
+  gap: var(--margin-block);
+}
+
+.workTimeInput {
+  flex-grow: 1;
 }
 
 @media (max-width: 1023px) {

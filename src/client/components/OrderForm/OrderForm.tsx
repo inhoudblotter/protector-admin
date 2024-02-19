@@ -26,6 +26,7 @@ interface IOrderForm extends h.JSX.HTMLAttributes<HTMLFormElement> {
 // SERVICES_WITHIOUT_CAR_TYPE = ["storage"];
 
 export function OrderForm({ preloadState, type }: IOrderForm) {
+  console.log(preloadState);
   const { setAction: setAlertAction } = useContext(AlertContext);
   const [needDate, setNeedDate] = useState(false);
   const [needCarType, setNeedCarType] = useState(false);
@@ -172,7 +173,7 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
             message: `Заявка создана`,
           },
         });
-        route(`orders/${id}`);
+        route(`/orders/${id}`);
       });
       res
         .catch((error) => {

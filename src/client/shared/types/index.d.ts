@@ -1,6 +1,6 @@
-import { IOrder } from "./IOrder";
+import { IOrderResponse } from "./IOrderResponse";
 declare global {
   interface Window {
-    __order__?: IOrder;
+    __order__?: IOrderResponse;
   }
 }

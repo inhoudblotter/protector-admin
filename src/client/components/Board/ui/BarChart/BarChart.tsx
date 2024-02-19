@@ -189,7 +189,7 @@ export function BarChart({
                   }}
                   key={i}
                 >
-                  {el}
+                  <span class={styles.value}>{el}</span>
                 </div>
               ))}
             </div>

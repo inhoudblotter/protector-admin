@@ -156,6 +156,7 @@ export function SettingsForm() {
   }
 
   useEffect(() => {
+    console.log(settings);
     if (settings) {
       setWorkTime({
         from: `${formatTime(settings.work_time.from.hours)}:${formatTime(
@@ -231,23 +232,27 @@ export function SettingsForm() {
               }}
             />
           </Fieldset>
-          <Fieldset title="Рабочее время" class={styles.workTime}>
-            <Input
-              placeholder={"Начало"}
-              maxLength={5}
-              value={workTime.from}
-              onChange={(e) => {
-                setWorkTime({ ...workTime, from: onChangeFormatTime(e) });
-              }}
-            />
-            <Input
-              placeholder={"Конец"}
-              maxLength={5}
-              value={workTime.from}
-              onChange={(e) => {
-                setWorkTime({ ...workTime, from: onChangeFormatTime(e) });
-              }}
-            />
+          <Fieldset title="Рабочее время">
+            <div class={styles.workTime}>
+              <Input
+                class={styles.workTimeInput}
+                placeholder={"Начало"}
+                maxLength={5}
+                value={workTime.from}
+                onChange={(e) => {
+                  setWorkTime({ ...workTime, from: onChangeFormatTime(e) });
+                }}
+              />
+              <Input
+                class={styles.workTimeInput}
+                placeholder={"Конец"}
+                maxLength={5}
+                value={workTime.to}
+                onChange={(e) => {
+                  setWorkTime({ ...workTime, to: onChangeFormatTime(e) });
+                }}
+              />
+            </div>
           </Fieldset>
           <Fieldset title="Контакты">
             <Input
