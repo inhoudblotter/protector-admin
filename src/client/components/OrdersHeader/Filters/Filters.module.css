@@ -7,6 +7,6 @@
   cursor: pointer;
 }
 
-.icon {
+svg.icon {
   --color: var(--color-bg);
 }

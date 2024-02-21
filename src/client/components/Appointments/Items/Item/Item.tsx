@@ -11,6 +11,7 @@ import styles from "./Item.module.css";
 import { useOrderActions } from "src/client/shared/hooks/useOrderActions";
 import { useState } from "preact/hooks";
 import { CheckoutForm } from "src/client/components/CheckoutForm/CheckoutForm";
+import { DeleteConfirm } from "src/client/components/DeleteConfirm";
 
 interface IItem extends h.JSX.HTMLAttributes<HTMLLIElement> {
   appointment: IOrderResponse;
@@ -21,6 +22,7 @@ export function Item({ appointment, class: className, refreshItems }: IItem) {
   const { handleCheck, handleDelete, isDeleted, isDone, ref } =
     useOrderActions<HTMLLIElement>(appointment.id, refreshItems);
   const [isCheckoutOpen, setCheckoutOpen] = useState(false);
+  const [isDeleteClicked, setDeleteClicked] = useState(false);
   return (
     <>
       <li
@@ -64,7 +66,10 @@ export function Item({ appointment, class: className, refreshItems }: IItem) {
           >
             <Done class={styles.actionIcon} />
           </button>
-          <button class={cn(styles.action)} onClick={handleDelete}>
+          <button
+            class={cn(styles.action)}
+            onClick={() => setDeleteClicked(true)}
+          >
             <Trash class={styles.actionIcon} />
           </button>
           <Link class={cn(styles.action)} href={`/orders/${appointment.id}`}>
@@ -78,6 +83,12 @@ export function Item({ appointment, class: className, refreshItems }: IItem) {
           order={appointment}
           onDone={handleCheck}
           onClose={() => setCheckoutOpen(false)}
+        />
+      )}
+      {isDeleteClicked && (
+        <DeleteConfirm
+          onClose={() => setDeleteClicked(false)}
+          onSubmit={handleDelete}
         />
       )}
     </>

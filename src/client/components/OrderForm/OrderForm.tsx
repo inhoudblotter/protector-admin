@@ -178,6 +178,11 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
       res
         .catch((error) => {
           if (isError(error)) {
+            if (error.code === 4060) {
+              preloadState = undefined;
+              type = "new";
+            }
+            setDate(null);
             setAlertAction({
               type: "add",
               payload: { type: "error", message: error.message },
