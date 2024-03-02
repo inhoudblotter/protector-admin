@@ -15,9 +15,7 @@ import { SettingsContext } from "src/client/shared/model/settingsContext";
 import { SERVICES } from "src/client/shared/config/services";
 import { isKeyOfServices } from "src/client/shared/types/IServicesSettings";
 
-interface IBoard extends h.JSX.HTMLAttributes<HTMLElement> {}
-
-export function Board({ ...props }: IBoard) {
+export function Board({ ...props }: h.JSX.HTMLAttributes<HTMLElement>) {
   const { setAction: setAlertAction } = useContext(AlertContext);
   const { settings, load: loadSettings } = useContext(SettingsContext);
   const [stats, setStats] = useState<Partial<IStats>>({});

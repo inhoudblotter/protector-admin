@@ -1,3 +1,10 @@
 .container {
   padding: var(--margin-block);
 }
+
+@media (max-width: 964px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

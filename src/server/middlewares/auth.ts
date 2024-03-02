@@ -13,6 +13,7 @@ export async function auth(req: Request, res: Response, next: NextFunction) {
     if (isError(error) && error.code === 401) {
       return res.redirect("/login");
     }
+    console.log(error);
     return res.redirect("/server-error");
   }
 }

@@ -10,9 +10,7 @@ import { Items } from "./Items/Items";
 import { parseQuery } from "src/client/shared/utils/parseQuery";
 import { IOrderResponse } from "src/client/shared/types/IOrderResponse";
 
-interface IAppointments extends h.JSX.HTMLAttributes<HTMLElement> {}
-
-export function Appointments({ ...props }: IAppointments) {
+export function Appointments({ ...props }: h.JSX.HTMLAttributes<HTMLElement>) {
   const [params, route] = useRouter();
   const preloadDate = useMemo(() => {
     return parseQuery(params.url).date;

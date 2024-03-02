@@ -58,6 +58,7 @@ export function SettingsForm() {
     leadTime: 0,
     prices: {
       suv: defaultPrices,
+      crossover: defaultPrices,
       passengerCar: defaultPrices,
     },
   });
@@ -66,6 +67,7 @@ export function SettingsForm() {
     leadTime: 0,
     prices: {
       suv: defaultPrices,
+      crossover: defaultPrices,
       passengerCar: defaultPrices,
     },
   });
@@ -75,6 +77,7 @@ export function SettingsForm() {
       leadTime: 0,
       prices: {
         suv: defaultPrices,
+        crossover: defaultPrices,
         passengerCar: defaultPrices,
       },
     });
@@ -84,6 +87,7 @@ export function SettingsForm() {
     leadTime: 0,
     prices: {
       suv: defaultPrices,
+      crossover: defaultPrices,
       passengerCar: defaultPrices,
     },
   });
@@ -93,6 +97,7 @@ export function SettingsForm() {
     leadTime: 0,
     prices: {
       suv: defaultPrices,
+      crossover: defaultPrices,
       passengerCar: defaultPrices,
     },
   });
@@ -102,6 +107,7 @@ export function SettingsForm() {
     leadTime: 0,
     prices: {
       suv: defaultPrices,
+      crossover: defaultPrices,
       passengerCar: defaultPrices,
     },
   });
@@ -111,6 +117,7 @@ export function SettingsForm() {
     leadTime: 0,
     prices: {
       suv: defaultPrices,
+      crossover: defaultPrices,
       passengerCar: defaultPrices,
     },
   });
@@ -125,6 +132,7 @@ export function SettingsForm() {
     leadTime: 0,
     prices: {
       suv: defaultRangePrices,
+      crossover: defaultRangePrices,
       passengerCar: defaultRangePrices,
     },
   });
@@ -133,6 +141,7 @@ export function SettingsForm() {
     e.preventDefault();
     const workStart = workTime.from.split(":").map((el) => Number(el));
     const workEnd = workTime.to.split(":").map((el) => Number(el));
+    console.log(complex);
     updateSettings({
       phone: cleanPhone(phone),
       work_time: {
@@ -156,7 +165,6 @@ export function SettingsForm() {
   }
 
   useEffect(() => {
-    console.log(settings);
     if (settings) {
       setWorkTime({
         from: `${formatTime(settings.work_time.from.hours)}:${formatTime(

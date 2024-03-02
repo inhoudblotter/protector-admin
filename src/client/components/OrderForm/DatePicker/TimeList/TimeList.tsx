@@ -12,13 +12,14 @@ interface ITimeList extends h.JSX.HTMLAttributes<HTMLUListElement> {
   services: string[];
   wheels: number;
   setTime: (v: string) => void;
+  skip?: number;
 }
 
-export function TimeList({ date, setTime, services, wheels }: ITimeList) {
+export function TimeList({ date, setTime, services, wheels, skip }: ITimeList) {
   const { setAction: setAlertAction } = useContext(AlertContext);
   const [freeTime, setFreeTime] = useState<string[][] | null>(null);
   useEffect(() => {
-    getFreeTimes(date, { services, wheels })
+    getFreeTimes(date, { services, wheels }, skip)
       .then((times) => setFreeTime(times))
       .catch((error) => {
         if (error instanceof Error || isError(error)) {
@@ -28,7 +29,7 @@ export function TimeList({ date, setTime, services, wheels }: ITimeList) {
           });
         } else throw error;
       });
-  }, [setFreeTime, services, wheels, setAlertAction, date]);
+  }, [setFreeTime, services, wheels, setAlertAction, date, skip]);
   return (
     <ul class={styles.container}>
       {freeTime === null ? (

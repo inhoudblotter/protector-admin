@@ -1,10 +1,11 @@
 import { h } from "preact";
 import { useCallback, ChangeEvent } from "preact/compat";
 import styles from "./CarType.module.css";
+import { StateUpdater } from "preact/hooks";
 
 export interface ICarType extends h.JSX.HTMLAttributes<HTMLDivElement> {
   carType: string | null;
-  setValue: (v: string) => void;
+  setValue: StateUpdater<string | null>;
 }
 
 export function CarType({ class: className, carType, setValue }: ICarType) {
@@ -32,11 +33,22 @@ export function CarType({ class: className, carType, setValue }: ICarType) {
           class={styles.input}
           type="radio"
           name="car-type"
+          value={"crossover"}
+          checked={carType === "crossover"}
+          onChange={onChange}
+        />
+        <span class={styles.label}>Кроссовер</span>
+      </label>
+      <label class={styles.radio}>
+        <input
+          class={styles.input}
+          type="radio"
+          name="car-type"
           value={"suv"}
           checked={carType === "suv"}
           onChange={onChange}
         />
-        <span class={styles.label}>Кроссовер / Внедорожник</span>
+        <span class={styles.label}>Внедорожник</span>
       </label>
     </div>
   );

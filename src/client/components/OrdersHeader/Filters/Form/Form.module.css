@@ -1,9 +1,9 @@
 .modal {
   width: 100%;
-  max-width: 950px;
+  max-width: 600px;
 }
 
-.container {
+.form {
   display: flex;
   flex-direction: column;
   gap: var(--margin-block);

@@ -17,6 +17,7 @@ import { IOrderResponse } from "src/client/shared/types/IOrderResponse";
 import { IOrder } from "src/client/shared/types/IOrder";
 import { AlertContext } from "src/client/shared/model/alertContext";
 import { route } from "preact-router";
+import { cleanPhone } from "src/client/shared/utils/cleanPhone";
 
 interface IOrderForm extends h.JSX.HTMLAttributes<HTMLFormElement> {
   type: "new" | "update";
@@ -26,7 +27,6 @@ interface IOrderForm extends h.JSX.HTMLAttributes<HTMLFormElement> {
 // SERVICES_WITHIOUT_CAR_TYPE = ["storage"];
 
 export function OrderForm({ preloadState, type }: IOrderForm) {
-  console.log(preloadState);
   const { setAction: setAlertAction } = useContext(AlertContext);
   const [needDate, setNeedDate] = useState(false);
   const [needCarType, setNeedCarType] = useState(false);
@@ -55,7 +55,7 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
   useEffect(() => {
     let needDate = false;
     let needCarType = false;
-    for (let service of services) {
+    for (const service of services) {
       if (service !== "storage") {
         needDate = true;
         needCarType = true;
@@ -68,7 +68,7 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
 
   function onSubmit(e: TargetedEvent<HTMLFormElement, Event>) {
     e.preventDefault();
-
+    const cleanedPhone = cleanPhone(phone);
     if (!services.length) {
       return setAlertAction({
         type: "add",
@@ -114,7 +114,7 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
         },
       });
     }
-    if (!phone || phone.length > 15) {
+    if (!cleanedPhone || cleanedPhone.length > 15) {
       return setAlertAction({
         type: "add",
         payload: {
@@ -124,12 +124,13 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
         },
       });
     }
-    if (carNumber.length > 6) {
+    if (!carNumber || carNumber.length > 6) {
       return setAlertAction({
         type: "add",
         payload: {
           type: "error",
-          message: "Номер автомобиля не должен превышать 6 символов",
+          message:
+            "Номер автомобиля обязательно запонять. Он не должен превышать 6 символов",
         },
       });
     }
@@ -219,6 +220,7 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
           wheels={Number(quantity)}
           class={styles.datePicker}
           setValue={setDate}
+          skip={preloadState?.id}
         />
       )}
       {needDate && date && (

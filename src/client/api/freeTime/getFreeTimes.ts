@@ -7,14 +7,15 @@ export async function getFreeTimes(
   order: {
     services: string[];
     wheels: number;
-  }
+  },
+  skip?: number
 ) {
   const res = await fetch(
     `${
       import.meta.env.VITE_API_HOST
     }/free-time/day/${date}?services=${order.services.join(",")}&wheels=${
       order.wheels
-    }`,
+    }${skip ? `&skip=${skip}` : ""}`,
     {
       mode: "cors",
       credentials: "include",

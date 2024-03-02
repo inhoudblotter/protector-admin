@@ -24,7 +24,7 @@ export function Item({ name, value, selectedItems, setSelectedItems }: IItem) {
   }
   return (
     <li class={cn(styles.container, isActive && styles.active)}>
-      <button class={styles.btn} onClick={handleClick}>
+      <button class={styles.btn} onClick={handleClick} type={"button"}>
         <span class={styles.label}>{name}</span>
         <Check class={styles.icon} />
       </button>

@@ -48,7 +48,8 @@
 }
 
 .name,
-.phone {
+.phone,
+.carNumber {
   font: var(--font-text);
   color: var(--color-text);
 }

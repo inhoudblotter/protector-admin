@@ -14,6 +14,7 @@ interface ICalendar extends h.JSX.HTMLAttributes<HTMLDivElement> {
   wheels: number;
   month: string;
   setDate: (v: string) => void;
+  skip?: number;
 }
 
 const DAYS = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
@@ -24,11 +25,12 @@ export function Calendar({
   services,
   wheels,
   class: className,
+  skip,
 }: ICalendar) {
   const [dates, setDates] = useState<IDates | null>(null);
   const { setAction: setAlertAction } = useContext(AlertContext);
   useEffect(() => {
-    getFreeDates(month, { services, wheels })
+    getFreeDates(month, { services, wheels }, skip)
       .then((data) => setDates(data))
       .catch((error) => {
         if (isError(error) || error instanceof Error) {

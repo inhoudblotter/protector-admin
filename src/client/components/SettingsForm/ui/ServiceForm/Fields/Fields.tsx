@@ -90,18 +90,29 @@ export function Fields({
             setPrices={(v) => {
               setPrices({
                 ...prices,
-                passengerCar: { ...prices.suv, ...v },
+                passengerCar: v,
               });
             }}
           />
           <Prices
             type="min-max"
-            title="Кроссоверы и внедорожники"
+            title="Кроссоверы"
+            prices={prices.crossover}
+            setPrices={(v) => {
+              setPrices({
+                ...prices,
+                crossover: v,
+              });
+            }}
+          />
+          <Prices
+            type="min-max"
+            title="Внедорожники"
             prices={prices.suv}
             setPrices={(v) => {
               setPrices({
                 ...prices,
-                suv: { ...prices.passengerCar, ...v },
+                suv: v,
               });
             }}
           />
@@ -115,18 +126,29 @@ export function Fields({
             setPrices={(v) => {
               setPrices({
                 ...prices,
-                passengerCar: { ...prices.suv, ...v },
+                passengerCar: v,
               });
             }}
           />
           <Prices
             type="default"
-            title="Кроссоверы и внедорожники"
+            title="Кроссоверы"
             prices={prices.suv}
             setPrices={(v) => {
               setPrices({
                 ...prices,
-                suv: { ...prices.passengerCar, ...v },
+                crossover: v,
+              });
+            }}
+          />
+          <Prices
+            type="default"
+            title="Внедорожники"
+            prices={prices.suv}
+            setPrices={(v) => {
+              setPrices({
+                ...prices,
+                suv: v,
               });
             }}
           />

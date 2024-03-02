@@ -1,5 +1,6 @@
 import { h } from "preact";
 import styles from "./Checkbox.module.css";
+import { cn } from "../../utils/cn";
 
 interface ICheckbox extends h.JSX.HTMLAttributes<HTMLInputElement> {
   title: string;
@@ -13,13 +14,7 @@ export function Checkbox({
   ...props
 }: ICheckbox) {
   return (
-    <label
-      class={[
-        styles.container,
-        className,
-        lighten ? styles.lighten : undefined,
-      ].join(" ")}
-    >
+    <label class={cn(styles.container, className, lighten && styles.lighten)}>
       <input class={styles.input} type="checkbox" {...props} />
       <div class={styles.icon} />
       <h3 class={styles.label}>{title}</h3>

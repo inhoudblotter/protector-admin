@@ -54,7 +54,7 @@
   line-height: 1;
 }
 
-.lighten :checked + .icon {
+.lighten .input:checked + .icon {
   border-color: var(--color-text);
   opacity: 0.5;
 }
@@ -62,5 +62,22 @@
 @media (max-width: 964px) {
   .container {
     --input-size: 20px;
+  }
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:focus-visible + .icon {
+  border-color: var(--color-accent-darken);
+}
+
+@media (hover: hover) {
+  .container:hover .icon {
+    border-color: var(--color-accent-light);
+  }
+  .container:hover .input:checked + .icon {
+    border-color: var(--color-accent-darken);
   }
 }

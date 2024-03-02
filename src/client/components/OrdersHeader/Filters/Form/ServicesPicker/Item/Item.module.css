@@ -19,7 +19,7 @@
   text-align: start;
 }
 
-.icon {
+svg.icon {
   opacity: 0;
   --color: var(--color-bg);
   transition: opacity 0.3s ease-in-out;

@@ -1,14 +1,11 @@
 .container {
   display: flex;
+  gap: 5px;
 }
 
 .radio {
   position: relative;
   flex-grow: 1;
-}
-
-.radio:first-child {
-  margin-right: 5px;
 }
 
 .input {

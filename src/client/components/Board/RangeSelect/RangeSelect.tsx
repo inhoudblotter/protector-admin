@@ -7,9 +7,9 @@ import { h } from "preact";
 import { roundDate } from "src/client/shared/utils/roundDate";
 import { SettingsContext } from "src/client/shared/model/settingsContext";
 
-interface IRangeSelect extends h.JSX.HTMLAttributes<HTMLDivElement> {}
-
-export function RangeSelect({ ...props }: IRangeSelect) {
+export function RangeSelect({
+  ...props
+}: h.JSX.HTMLAttributes<HTMLDivElement>) {
   const { settings, load: loadSettings } = useContext(SettingsContext);
   const [type, setType] = useState<"day" | "range">("day");
   const [range, setRange] = useState<{ from: string; to: string }>({

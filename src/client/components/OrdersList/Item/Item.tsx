@@ -44,6 +44,7 @@ export function Item({ order, class: className, refreshItems }: IItem) {
           >
             {order.client.phone}
           </a>
+          <span class={styles.carNumber}>{order.client.carNumber}</span>
         </div>
         <ul class={styles.services}>
           {order.services.map((s) => (

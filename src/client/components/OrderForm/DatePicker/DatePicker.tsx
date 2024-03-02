@@ -9,6 +9,7 @@ interface IDatePicker extends h.JSX.HTMLAttributes<HTMLDivElement> {
   services: string[];
   wheels: number;
   setValue: (time: string) => void;
+  skip?: number;
 }
 
 export function DatePicker({
@@ -16,6 +17,7 @@ export function DatePicker({
   wheels,
   class: className,
   setValue,
+  skip,
 }: IDatePicker) {
   const now = new Date();
   const [month, setMonth] = useState<string>(now.toISOString());
@@ -38,6 +40,7 @@ export function DatePicker({
           setDate={setDate}
           services={services}
           wheels={wheels}
+          skip={skip}
         />
       ) : (
         <TimeList
@@ -45,6 +48,7 @@ export function DatePicker({
           setTime={setTime}
           services={services}
           wheels={wheels}
+          skip={skip}
         />
       )}
     </div>

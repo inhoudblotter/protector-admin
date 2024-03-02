@@ -25,9 +25,9 @@ interface IAlertContext {
 
 export const AlertContext = createContext<IAlertContext>({
   alerts: [],
-  setAlerts: () => {},
+  setAlerts: () => undefined,
   action: undefined,
-  setAction: () => {},
+  setAction: () => undefined,
 });
 
 export function AlertProvider({ children }: IProvider) {

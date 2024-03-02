@@ -1,4 +1,6 @@
 import { IOrder } from "src/client/shared/types/IOrder";
+import { IError } from "src/client/shared/types/IError";
+import { isError } from "src/client/shared/types/typeGuards/isError";
 
 export async function updateOrder(order: IOrder & { id: number }) {
   const res = await fetch(
@@ -13,9 +15,7 @@ export async function updateOrder(order: IOrder & { id: number }) {
       body: JSON.stringify(order),
     }
   );
-  const data = (await res.json()) as { id: number };
-  if (res.ok) {
-    return data.id;
-  }
+  const data = (await res.json()) as { id: number } | IError;
+  if (res.ok && !isError(data)) return data;
   throw data;
 }
