@@ -104,7 +104,7 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
         },
       });
     }
-    if (!name || name.length > 102) {
+    if (!name || name.length > 100) {
       return setAlertAction({
         type: "add",
         payload: {
@@ -114,7 +114,7 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
         },
       });
     }
-    if (!cleanedPhone || cleanedPhone.length > 15) {
+    if (!cleanedPhone || cleanedPhone.length > 12 || cleanedPhone.length < 11) {
       return setAlertAction({
         type: "add",
         payload: {

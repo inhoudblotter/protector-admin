@@ -19,9 +19,7 @@ import { parseQuery } from "src/client/shared/utils/parseQuery";
 import { DoneItem } from "./DoneItem";
 import { AlertContext } from "src/client/shared/model/alertContext";
 
-interface IOrdersList extends h.JSX.HTMLAttributes<HTMLElement> {}
-
-export function OrdersList({}: IOrdersList) {
+export function OrdersList({ ...props }: h.JSX.HTMLAttributes<HTMLDivElement>) {
   const { setAction } = useContext(AlertContext);
   const [orders, setOrders] = useState<IOrderResponse[]>([]);
   const [isLoading, setLoading] = useState(false);
@@ -95,7 +93,7 @@ export function OrdersList({}: IOrdersList) {
           <Loader class={styles.loader} />
         </div>
       ) : (
-        <div class={styles.container}>
+        <div class={styles.container} {...props}>
           {!totalCount && !isLoading ? (
             <span class={styles.blankMessage}>Пока здесь пусто</span>
           ) : (

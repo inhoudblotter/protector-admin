@@ -12,6 +12,7 @@ import { useOrderActions } from "src/client/shared/hooks/useOrderActions";
 import { useState } from "preact/hooks";
 import { CheckoutForm } from "src/client/components/CheckoutForm/CheckoutForm";
 import { DeleteConfirm } from "src/client/components/DeleteConfirm";
+import { formatPhone } from "src/client/shared/utils/formatPhone";
 
 interface IItem extends h.JSX.HTMLAttributes<HTMLLIElement> {
   appointment: IOrderResponse;
@@ -49,7 +50,7 @@ export function Item({ appointment, class: className, refreshItems }: IItem) {
             class={styles.phone}
             href={`tel:${cleanPhone(appointment.client.phone)}`}
           >
-            {appointment.client.phone}
+            {formatPhone(appointment.client.phone)}
           </a>
         </div>
         <ul class={styles.services}>
