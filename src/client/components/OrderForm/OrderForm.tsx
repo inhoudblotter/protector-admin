@@ -69,71 +69,36 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
   function onSubmit(e: TargetedEvent<HTMLFormElement, Event>) {
     e.preventDefault();
     const cleanedPhone = cleanPhone(phone);
-    if (!services.length) {
-      return setAlertAction({
-        type: "add",
-        payload: {
-          type: "error",
-          message: "Выберите хотя бы одну услугу",
-        },
-      });
-    }
-    if (needCarType && !carType) {
-      return setAlertAction({
-        type: "add",
-        payload: { type: "error", message: "Выберите тип автомобиля" },
-      });
-    }
     const q = Number(quantity);
-    if (isNaN(q) || q < 1 || q > 6) {
-      return setAlertAction({
-        type: "add",
-        payload: {
-          type: "error",
-          message: "Количество колёс должно быть от 1 до 6",
-        },
-      });
-    }
     const r = Number(radius);
-    if (isNaN(r) || r < 12 || r > 24) {
+    let validationError = "";
+    if (!services.length) {
+      validationError = "Выберите хотя бы одну услугу";
+    } else if (needCarType && !carType) {
+      validationError = "Выберите тип автомобиля";
+    } else if (isNaN(q) || q < 1 || q > 6) {
+      validationError = "Количество колёс должно быть от 1 до 6";
+    } else if (isNaN(r) || r < 12 || r > 24) {
+      validationError = "Радиус колес должен быть от 12 до 24";
+    } else if (!name || name.length > 100) {
+      validationError =
+        "Имя не должно быть пустым, а его длинна не должна превышать 102 символа";
+    } else if (
+      !cleanedPhone ||
+      cleanedPhone.length > 12 ||
+      cleanedPhone.length < 11
+    ) {
+      validationError =
+        "Номер обязательно заполнять. Проверте правильно ли вы его ввели.";
+    } else if (!carNumber || carNumber.length > 6) {
+      validationError =
+        "Номер автомобиля обязательно запонять. Он не должен превышать 6 символов";
+    }
+    if (validationError)
       return setAlertAction({
         type: "add",
-        payload: {
-          type: "error",
-          message: "Радиус колес должен быть от 12 до 24",
-        },
+        payload: { type: "error", message: validationError },
       });
-    }
-    if (!name || name.length > 100) {
-      return setAlertAction({
-        type: "add",
-        payload: {
-          type: "error",
-          message:
-            "Имя не должно быть пустым, а его длинна не должна превышать 102 символа",
-        },
-      });
-    }
-    if (!cleanedPhone || cleanedPhone.length > 12 || cleanedPhone.length < 11) {
-      return setAlertAction({
-        type: "add",
-        payload: {
-          type: "error",
-          message:
-            "Номер обязательно заполнять. Проверте правильно ли вы его ввели.",
-        },
-      });
-    }
-    if (!carNumber || carNumber.length > 6) {
-      return setAlertAction({
-        type: "add",
-        payload: {
-          type: "error",
-          message:
-            "Номер автомобиля обязательно запонять. Он не должен превышать 6 символов",
-        },
-      });
-    }
 
     const order: IOrder & { id?: number } = {
       client: {
@@ -176,24 +141,24 @@ export function OrderForm({ preloadState, type }: IOrderForm) {
         });
         route(`/orders/${id}`);
       });
-      res
-        .catch((error) => {
-          if (isError(error)) {
-            if (error.code === 4060) {
-              preloadState = undefined;
-              type = "new";
-            }
-            setDate(null);
-            setAlertAction({
-              type: "add",
-              payload: { type: "error", message: error.message },
-            });
-          } else throw error;
-        })
-        .finally(() => {
-          setLoading(false);
-        });
     }
+    res
+      .catch((error) => {
+        if (isError(error)) {
+          if (error.code === 4060) {
+            preloadState = undefined;
+            type = "new";
+          }
+          setDate(null);
+          setAlertAction({
+            type: "add",
+            payload: { type: "error", message: error.message },
+          });
+        } else throw error;
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   return (
